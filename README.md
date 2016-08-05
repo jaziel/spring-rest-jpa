@@ -1,3 +1,3 @@
 # spring-rest-jpa
 
-Demo application using Spring, rest and JPA.
+Demo application using Spring, rest and JPA. Initial concept.
