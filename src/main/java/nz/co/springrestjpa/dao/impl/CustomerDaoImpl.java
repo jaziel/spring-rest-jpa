@@ -32,8 +32,8 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
-	public Collection<Customer> getAllCustomer() {
-		String qlString = "SELECT p FROM customer p";
+	public Collection<Customer> getAllCustomers() {
+		String qlString = "SELECT p FROM Customer p";
 		TypedQuery<Customer> query = entityManager.createQuery(qlString, Customer.class);		
 
 		return query.getResultList();
@@ -41,22 +41,22 @@ public class CustomerDaoImpl implements CustomerDao {
 
 	@Override
 	public void deleteCustomers() {
-		Query query = entityManager.createNativeQuery("TRUNCATE TABLE customer");		
+		Query query = entityManager.createNativeQuery("TRUNCATE TABLE Customer");		
 		query.executeUpdate();
 
 	}
 
 	@Override
-	public Customer deleteCustomer(Integer id) {
+	public Customer deleteCustomer(Long id) {
 		Customer customer = entityManager.find(Customer.class, id);
 		entityManager.remove(customer);
 		return customer;
 	}
 
 	@Override
-	public Customer getCustomer(Integer id) {
+	public Customer getCustomer(Long id) {
 		try {
-			String qlString = "SELECT p FROM customer p WHERE p.id = ?1";
+			String qlString = "SELECT p FROM Customer p WHERE p.id = ?1";
 			TypedQuery<Customer> query = entityManager.createQuery(qlString, Customer.class);		
 			query.setParameter(1, id);
 

@@ -11,12 +11,12 @@ public interface CustomerDao {
 	
 	public Customer updateCustomer(Customer customer);
 	
-	public Collection<Customer> getAllCustomer();
+	public Collection<Customer> getAllCustomers();
 	
 	public void deleteCustomers();
 	
-	public Customer deleteCustomer(Integer id); 
+	public Customer deleteCustomer(Long id); 
 	
-	public Customer getCustomer(Integer id);
+	public Customer getCustomer(Long id);
 
 }
