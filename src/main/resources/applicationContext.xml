@@ -64,6 +64,11 @@
     <property name="shared" value="true" />
   </bean>
 
+<!-- <bean id="cacheManager" class="org.springframework.cache.jcache.JCacheCacheManager"/> -->
+
+<!-- JSR-107 cache manager setup -->
+<!-- <bean id="jCacheManager" .../> -->
+
   <cache:annotation-driven />
 
 </beans>

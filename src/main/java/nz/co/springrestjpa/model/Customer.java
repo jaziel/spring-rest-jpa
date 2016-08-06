@@ -17,15 +17,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "customer")
 @XmlRootElement(name = "customer")
 @XmlAccessorType(XmlAccessType.NONE)
-public class Customer implements Serializable{
+public class Customer implements Serializable {
 
   /**
    * 
    */
   private static final long serialVersionUID = 8128120823034355117L;
-  
+
   @Id
-  @GeneratedValue(strategy=GenerationType.AUTO)
+  @GeneratedValue(strategy = GenerationType.AUTO)
   @XmlAttribute
   @Column(name = "id")
   private Long id;
@@ -80,6 +80,11 @@ public class Customer implements Serializable{
 
   public void setPhone(String phone) {
     this.phone = phone;
+  }
+
+  @Override
+  public String toString() {
+    return "Customer [name=" + name + "]";
   }
 
 }
