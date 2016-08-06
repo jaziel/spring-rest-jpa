@@ -1,4 +1,4 @@
-package nz.co.springrestjpa.dao;
+package nz.co.springrestjpa.repositories;
 
 import java.util.Collection;
 
@@ -10,76 +10,69 @@ import org.testng.annotations.Test;
 
 import nz.co.springrestjpa.model.Customer;
 
-
 /**
- * Unit tests for CustomerDao
+ * Unit tests for CustomerRepository
  * 
  * @author jaziel
  *
  */
 @ContextConfiguration(locations = {"classpath:test-applicationContext.xml"})
-public class CustomerDaoTest extends AbstractTransactionalTestNGSpringContextTests {
+public class CustomerRepositoryTest extends AbstractTransactionalTestNGSpringContextTests {
 
   @Autowired
-  CustomerDao customerDao;
+  CustomerRepository repository;
 
   @Test
-  void testCreateCustomer() {
+  void testSave() {
     Customer customer = new Customer();
     customer.setName("Jhon Nox");
     customer.setAddress("1234 Cross Ave, Michigan");
     customer.setEmail("jhon@nox.com");
     customer.setPhone("+1 (12) 3456789");
-    customer = customerDao.createCustomer(customer);
+    customer = repository.save(customer);
     Assert.assertNotNull(customer);
     Assert.assertNotNull(customer.getId());
   }
 
 
-  @Test(dependsOnMethods = {"testCreateCustomer"})
-  void testGetCustomer() {
+  @Test
+  void testFindOne() {
     Long id = 1001l;
-    Customer customer = customerDao.getCustomer(id);
+    Customer customer = repository.findOne(id);
     Assert.assertNotNull(customer);
     Assert.assertEquals(customer.getId(), id);
   }
 
-  @Test(dependsOnMethods = {"testGetCustomer"})
+  @Test
   void testGetAllCustomers() {
-    Collection<Customer> customers = customerDao.getAllCustomers();
+    Collection<Customer> customers = repository.findAll();
     Assert.assertNotNull(customers);
     Assert.assertEquals(customers.isEmpty(), false);
     Assert.assertEquals(customers.size(), 1000);
   }
 
-  @Test(dependsOnMethods = {"testGetAllCustomers"})
+  @Test
   void testUpdateCustomer() {
     Long id = 1001l;
-    Customer customer = customerDao.getCustomer(id);
+    Customer customer = repository.findOne(id);
     customer.setName("Lenon Brown");
-    customer = customerDao.updateCustomer(customer);
+    customer = repository.save(customer);
     Assert.assertEquals(customer.getName(), "Lenon Brown");
   }
 
-  @Test(dependsOnMethods = {"testUpdateCustomer"})
+  @Test
   void testDeleteCustomer() {
     Long id = 1001l;
-    Customer customer = customerDao.deleteCustomer(id);
-    Assert.assertEquals(customer.getId(), id);
-    customer = customerDao.getCustomer(id);
-    Assert.assertNull(customer);
+    repository.delete(id);
+    Assert.assertEquals(repository.exists(id), false);
   }
 
-  @Test(dependsOnMethods = {"testDeleteCustomer"})
+  @Test
   void testDeleteCustomers() {
-    Customer customer = new Customer();
-    customer.setName("Elliot Grey");
-    customer.setAddress("4321 Connection Road, New York");
-    customer.setEmail("grey@elliot.com");
-    customer.setPhone("+1 (21) 66554431");
-    customer = customerDao.createCustomer(customer);
-    customerDao.deleteCustomers();
-    Collection<Customer> customers = customerDao.getAllCustomers();
+    Collection<Customer> customers = repository.findAll();
+    Assert.assertEquals(customers.isEmpty(), false);
+    repository.deleteAllInBatch();
+    customers = repository.findAll();
     Assert.assertEquals(customers.isEmpty(), true);
   }
 

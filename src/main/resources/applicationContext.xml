@@ -2,13 +2,17 @@
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xmlns:jdbc="http://www.springframework.org/schema/jdbc" xmlns:tx="http://www.springframework.org/schema/tx"
   xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:mvc="http://www.springframework.org/schema/mvc"
   xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-  <context:component-scan base-package="nz.co.springrestjpa.*" />
+  <mvc:annotation-driven />
+  <context:component-scan base-package="nz.co.springrestjpa" />
+  <jpa:repositories base-package="nz.co.springrestjpa.repositories" />
   <tx:annotation-driven transaction-manager="transactionManager" />
 
   <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
@@ -17,8 +21,8 @@
 
   <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
     <property name="persistenceXmlLocation" value="classpath:persistence.xml" />
-    <property name="persistenceUnitName" value="vodafonePersistence" />
-    <property name="dataSource" ref="vodafoneDS" />
+    <property name="persistenceUnitName" value="demoPersistence" />
+    <property name="dataSource" ref="demoDS" />
     <property name="packagesToScan" value="nz.co.springrestjpa.model" />
     <property name="jpaVendorAdapter">
       <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
@@ -29,14 +33,26 @@
     </property>
   </bean>
 
-  <bean name="vodafoneDS" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+  <bean name="demoDS" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-    <property name="url" value="jdbc:mysql://127.0.0.1:3306/vodafone" />
+    <property name="url" value="jdbc:mysql://127.0.0.1:3306/demo" />
     <property name="username" value="test" />
     <property name="password" value="test" />
   </bean>
 
   <bean id="customerDao" class="nz.co.springrestjpa.dao.impl.CustomerDaoImpl" />
+
+  <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+    <property name="messageConverters">
+      <list>
+        <ref bean="jsonMessageConverter" />
+      </list>
+    </property>
+  </bean>
+
+  <!-- To convert JSON to Object and vice versa -->
+  <bean id="jsonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+  </bean>
 
 
 </beans>

@@ -14,7 +14,7 @@ import nz.co.springrestjpa.model.Customer;
 
 public class CustomerDaoImpl implements CustomerDao {
 
-	@PersistenceContext(unitName="vodafonePersistence")
+	@PersistenceContext
 	private EntityManager entityManager;
 	
 	

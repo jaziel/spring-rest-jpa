@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
-  <persistence-unit name="vodafonePersistence" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="testPersistence" transaction-type="RESOURCE_LOCAL">
     <class>nz.co.springrestjpa.model.Customer</class>
     <properties>
       <property name="hibernate.show_sql" value="true"/>

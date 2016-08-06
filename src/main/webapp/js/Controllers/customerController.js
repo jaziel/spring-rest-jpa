@@ -1,4 +1,4 @@
-angular.module('vodafoneApp').controller('CustomerController',
+angular.module('demoApp').controller('CustomerController',
 		function($scope, CustomersResource) {
 			CustomersResource.query(function(data) {
 				$scope.customers = data;
@@ -49,7 +49,7 @@ angular.module('vodafoneApp').controller('CustomerController',
 				$scope.editing = false;
 				$scope.creating = false;
 			}
-			$scope.name = 'Vodafone RESTful';
+			$scope.name = 'Spring Rest JPA RESTful';
 			$scope.editing  = false;
 			$scope.creating = false;
 			

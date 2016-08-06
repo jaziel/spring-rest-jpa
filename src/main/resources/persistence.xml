@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
-  <persistence-unit name="vodafonePersistence" transaction-type="RESOURCE_LOCAL">
+  <persistence-unit name="demoPersistence" transaction-type="RESOURCE_LOCAL">
     <class>nz.co.springrestjpa.model.Customer</class>
     <property>
       <property name="hibernate.show_sql" value="true" />
+      <property key="hibernate.hbm2ddl.auto" valuew="update" />
     </property>
   </persistence-unit>
 </persistence>

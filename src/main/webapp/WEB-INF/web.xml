@@ -4,7 +4,7 @@
   version="3.1">
   <display-name>spring-rest-jpa</display-name>
   <welcome-file-list>
-    <welcome-file>vodafone.html</welcome-file>
+    <welcome-file>demoapp.html</welcome-file>
   </welcome-file-list>
 
   <listener>
@@ -15,4 +15,20 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
+
+  <servlet>
+    <servlet-name>rest</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value></param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>rest</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+
 </web-app>
