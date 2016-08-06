@@ -8,6 +8,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import org.springframework.cache.annotation.Cacheable;
+
 import nz.co.springrestjpa.dao.CustomerDao;
 import nz.co.springrestjpa.model.Customer;
 
@@ -32,6 +34,7 @@ public class CustomerDaoImpl implements CustomerDao {
 	}
 
 	@Override
+	@Cacheable(value="getAllCustomersCache")
 	public Collection<Customer> getAllCustomers() {
 		String qlString = "SELECT p FROM Customer p";
 		TypedQuery<Customer> query = entityManager.createQuery(qlString, Customer.class);		

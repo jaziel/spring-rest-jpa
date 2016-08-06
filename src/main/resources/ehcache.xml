@@ -1,0 +1,9 @@
+<ehcache xsi:noNamespaceSchemaLocation="ehcache.xsd" updateCheck="true" monitoring="autodetect"
+  dynamicConfig="true" maxBytesLocalHeap="150M">
+  <diskStore path="java.io.tmpdir" />
+
+  <cache name="getAllCustomersCache" maxBytesLocalHeap="100M" eternal="false" timeToIdleSeconds="45"
+    overflowToDisk="false" maxElementsOnDisk="2000" memoryStoreEvictionPolicy="LRU" />
+
+</ehcache>
+  
