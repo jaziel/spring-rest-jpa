@@ -11,6 +11,17 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <spring.version>4.3.2.RELEASE</spring.version>
   </properties>
+
+  <repositories>
+    <repository>
+      <id>terracotta-repository</id>
+      <url>http://www.terracotta.org/download/reflector/releases</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+    </repository>
+  </repositories>
+
   <dependencies>
     <dependency>
       <groupId>org.springframework</groupId>
@@ -47,6 +58,11 @@
       <groupId>net.sf.ehcache</groupId>
       <artifactId>ehcache</artifactId>
       <version>2.10.2</version>
+    </dependency>
+    <dependency>
+      <groupId>org.terracotta</groupId>
+      <artifactId>terracotta-toolkit-runtime</artifactId>
+      <version>4.3.2</version>
     </dependency>
 
     <!-- <dependency> -->
@@ -98,12 +114,12 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>6.0.3</version>
     </dependency>
-    
-<!--     <dependency> -->
-<!--       <groupId>ch.qos.logback</groupId> -->
-<!--       <artifactId>logback-classic</artifactId> -->
-<!--       <version>1.1.7</version> -->
-<!--     </dependency> -->
+
+    <!-- <dependency> -->
+    <!-- <groupId>ch.qos.logback</groupId> -->
+    <!-- <artifactId>logback-classic</artifactId> -->
+    <!-- <version>1.1.7</version> -->
+    <!-- </dependency> -->
 
     <dependency>
       <groupId>org.testng</groupId>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="ehcache.xsd" name="config">
+
+  <cache name="bigMemory" maxBytesLocalHeap="128M" copyOnRead="true" eternal="true">
+    <terracotta />
+  </cache>
+  <cache name="getAllCustomersCache" maxBytesLocalHeap="128M" copyOnRead="true" eternal="true">
+    <terracotta />
+  </cache>
+  <cache name="getCustomerCache" maxBytesLocalHeap="128M" copyOnRead="true" eternal="true">
+    <terracotta />
+  </cache>
+  <terracottaConfig url="localhost:9510" rejoin="false" />
+
+</ehcache>

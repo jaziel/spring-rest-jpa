@@ -31,8 +31,6 @@ public class CustomerDaoImpl implements CustomerDao {
 	@CachePut(cacheNames="getCustomerCache", key="#customer.id")
 	public Customer createCustomer(Customer customer) {
 		entityManager.persist(customer);
-		entityManager.flush();
-		
 		return customer;
 	}
 
