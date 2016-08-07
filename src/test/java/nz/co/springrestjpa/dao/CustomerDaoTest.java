@@ -36,7 +36,7 @@ public class CustomerDaoTest extends AbstractTransactionalTestNGSpringContextTes
   }
 
 
-  @Test(dependsOnMethods = {"testCreateCustomer"})
+  @Test
   void testGetCustomer() {
     Long id = 1001l;
     Customer customer = customerDao.getCustomer(id);
@@ -44,7 +44,7 @@ public class CustomerDaoTest extends AbstractTransactionalTestNGSpringContextTes
     Assert.assertEquals(customer.getId(), id);
   }
 
-  @Test(dependsOnMethods = {"testGetCustomer"})
+  @Test
   void testGetAllCustomers() {
     Collection<Customer> customers = customerDao.getAllCustomers();
     Assert.assertNotNull(customers);
@@ -52,7 +52,7 @@ public class CustomerDaoTest extends AbstractTransactionalTestNGSpringContextTes
     Assert.assertEquals(customers.size(), 1000);
   }
 
-  @Test(dependsOnMethods = {"testGetAllCustomers"})
+  @Test
   void testUpdateCustomer() {
     Long id = 1001l;
     Customer customer = customerDao.getCustomer(id);
@@ -61,7 +61,7 @@ public class CustomerDaoTest extends AbstractTransactionalTestNGSpringContextTes
     Assert.assertEquals(customer.getName(), "Lenon Brown");
   }
 
-  @Test(dependsOnMethods = {"testUpdateCustomer"})
+  @Test
   void testDeleteCustomer() {
     Long id = 1001l;
     Customer customer = customerDao.deleteCustomer(id);
@@ -70,7 +70,7 @@ public class CustomerDaoTest extends AbstractTransactionalTestNGSpringContextTes
     Assert.assertNull(customer);
   }
 
-  @Test(dependsOnMethods = {"testDeleteCustomer"})
+  @Test
   void testDeleteCustomers() {
     Customer customer = new Customer();
     customer.setName("Elliot Grey");

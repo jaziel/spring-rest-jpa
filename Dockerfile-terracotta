@@ -1,0 +1,8 @@
+FROM java:8
+WORKDIR /terracotta
+
+ENV TC_HOME /terracotta/terracotta-4.3.2/server
+ADD terracotta-4.3.2.tar.gz .
+
+EXPOSE 9510
+CMD ["terracotta-4.3.2/server/bin/start-tc-server.sh"]
