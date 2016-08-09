@@ -1,3 +1,6 @@
 FROM tomcat:8.5
 
+RUN wget https://github.com/jwilder/dockerize/releases/download/v0.1.0/dockerize-linux-amd64-v0.1.0.tar.gz && \
+    tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v0.1.0.tar.gz
+
 COPY /target/SpringRestJPA.war /usr/local/tomcat/webapps/SpringRestJPA.war

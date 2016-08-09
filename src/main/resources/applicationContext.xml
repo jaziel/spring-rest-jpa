@@ -45,9 +45,8 @@
 
   <bean name="demoDS" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-    <property name="url"
-      value="jdbc:mysql://#{systemEnvironment['DATABASE_PORT_3306_TCP_ADDR']}:3306/demo" />
-    <!-- <property name="url" value="jdbc:mysql://localhost:3306/demo" /> -->
+<!--     <property name="url" value="jdbc:mysql://localhost:3306/demo" /> -->
+    <property name="url" value="jdbc:mysql://database:3306/demo" />
     <property name="username" value="test" />
     <property name="password" value="test" />
   </bean>
