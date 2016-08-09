@@ -7,16 +7,16 @@ import nz.co.springrestjpa.model.Customer;
 
 public interface CustomerDao {
 	
-	public Customer createCustomer(Customer customer);
+	Customer createCustomer(Customer customer);
 	
-	public Customer updateCustomer(Customer customer);
+	Customer updateCustomer(Customer customer);
 	
-	public Collection<Customer> getAllCustomers();
+	Collection<Customer> getAllCustomers();
 	
-	public void deleteCustomers();
+	void deleteCustomers();
 	
-	public Customer deleteCustomer(Long id); 
+	Customer deleteCustomer(Long id); 
 	
-	public Customer getCustomer(Long id);
+	Customer getCustomer(Long id);
 
 }

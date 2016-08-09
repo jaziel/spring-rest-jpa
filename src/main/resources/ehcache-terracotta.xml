@@ -11,6 +11,7 @@
   <cache name="getCustomerCache" maxBytesLocalHeap="128M" copyOnRead="true" eternal="true">
     <terracotta />
   </cache>
-  <terracottaConfig url="localhost:9510" rejoin="false" />
+<!--   <terracottaConfig url="localhost:9510" rejoin="false" /> -->
+<terracottaConfig url="terracotta-server:9510" rejoin="false" />
 
 </ehcache>

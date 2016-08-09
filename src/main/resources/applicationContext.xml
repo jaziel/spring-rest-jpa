@@ -45,8 +45,9 @@
 
   <bean name="demoDS" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-<!--     <property name="url" value="jdbc:mysql://#{systemEnvironment['DATABASE_PORT_3306_TCP_ADDR']}:3306/demo" /> -->
-    <property name="url" value="jdbc:mysql://localhost:3306/demo" />
+    <property name="url"
+      value="jdbc:mysql://#{systemEnvironment['DATABASE_PORT_3306_TCP_ADDR']}:3306/demo" />
+    <!-- <property name="url" value="jdbc:mysql://localhost:3306/demo" /> -->
     <property name="username" value="test" />
     <property name="password" value="test" />
   </bean>
@@ -69,6 +70,7 @@
     <property name="cacheManager" ref="ehcache" />
   </bean>
   <bean id="ehcache" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+<!--     <property name="configLocation" value="classpath:ehcache.xml" /> -->
     <property name="configLocation" value="classpath:ehcache-terracotta.xml" />
     <property name="shared" value="true" />
   </bean>
