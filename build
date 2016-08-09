@@ -8,8 +8,8 @@ if [ "$?" = "0" ]; then
   echo 'cleaning the old docker springrestjpa:0.1 image'
   docker rmi -f springrestjpa:0.1
   
-  echo 'calling docker build -t springrestjpa:0.1 -f Dockerfile-app'
-  docker build -t springrestjpa:0.1 -f Dockerfile-app .
+  echo 'calling docker build -t springrestjpa:0.1 -f docker/Dockerfile-app'
+  docker build -t springrestjpa:0.1 -f docker/Dockerfile-app .
 
   echo 'build finished'
 else
