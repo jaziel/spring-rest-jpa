@@ -1,8 +1,11 @@
 FROM java:8
 WORKDIR /terracotta
 
+RUN wget http://d2zwv9pap9ylyd.cloudfront.net/terracotta-4.3.2.tar.gz && tar -xvf terracotta-4.3.2.tar.gz \
+  && rm terracotta-4.3.2.tar.gz
+
 ENV TC_HOME /terracotta/terracotta-4.3.2/server
-ADD terracotta-4.3.2.tar.gz .
+#ADD terracotta-4.3.2.tar.gz .
 
 EXPOSE 9510
 CMD ["terracotta-4.3.2/server/bin/start-tc-server.sh"]
