@@ -28,8 +28,8 @@ public class CustomerDaoImpl implements CustomerDao {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
-	@CachePut(cacheNames="getCustomerCache", key="#customer.id")
-	public Customer createCustomer(Customer customer) {
+	@Caching(put = {@CachePut(cacheNames="getCustomerCache", key="#customer.id")}, evict = { @CacheEvict(cacheNames ="getAllCustomersCache", allEntries=true) })
+    public Customer createCustomer(Customer customer) {
 		entityManager.persist(customer);
 		entityManager.flush();
 		return customer;
