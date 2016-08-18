@@ -11,4 +11,5 @@ command: docker run --link database:database --link terracotta-server:terracotta
 
 ( or change the configurations in the ApplicationContext.xml).
 
-TODO: Add the failsafe if terracotta server is offiline.
+TODO: Change the cucumber tests to use TestNG. 
+TODO: Add the failsafe if terracotta server is offline.
