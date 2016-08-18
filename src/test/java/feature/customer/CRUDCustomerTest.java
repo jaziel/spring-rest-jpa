@@ -1,10 +1,7 @@
 package feature.customer;
 
-import org.junit.runner.RunWith;
+import cucumber.api.testng.AbstractTestNGCucumberTests;
 
-import cucumber.api.junit.Cucumber;
-
-@RunWith(Cucumber.class)
-public class CRUDCustomerTest {
+public class CRUDCustomerTest extends AbstractTestNGCucumberTests {
 
 }
